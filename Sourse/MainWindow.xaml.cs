@@ -20,8 +20,25 @@ namespace InventoryApp
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            view_model.ExportToCsv(file_path);
-            MessageBox.Show("Данные успешно сохранены!", "Сохранение завершено", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (string.IsNullOrWhiteSpace(file_path))
+            {
+                SaveFileDialog save_file_dialog = new SaveFileDialog
+                {
+                    Filter = "All files (*.*)|*.*",
+                    DefaultExt = ".csv",
+                    FileName = "inventory_save.csv"
+                };
+                if (save_file_dialog.ShowDialog() == true)
+                {
+                    view_model.ExportToCsv(save_file_dialog.FileName);
+                    MessageBox.Show("Данные успешно сохранены", "Сохранение завершено", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            else
+            {
+                view_model.ExportToCsv(file_path);
+                MessageBox.Show("Данные успешно сохранены!", "Сохранение завершено", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void ExportToCsv_Click(object sender, RoutedEventArgs e)

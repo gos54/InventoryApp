@@ -1,0 +1,138 @@
+﻿<Window x:Class="InventoryApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InventoryApp"
+        mc:Ignorable="d"
+        Title="Управление инвентарем" Height="450" Width="800" MinWidth="800" MinHeight="450">
+    <Grid Background="#86964A">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Меню -->
+        <Menu Grid.Row="0" Grid.Column="0" Margin="5, 5, 0, 0" Background="#D1D090">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Импортировать json файл" Click="ImportFromJson_Click"/>
+                <MenuItem Header="Импортировать csv файл" Click="ImportFromCSV_Click"/>
+                <MenuItem Header="Экспортировать json файл" Click="ExportToJson_Click"/>
+                <MenuItem Header="Экспортировать csv файл" Click="ExportToCsv_Click"/>
+                <MenuItem Header="Сохранить файл" Click="Save_Click"/>
+            </MenuItem>
+            <MenuItem Header="Справка" Click="HelpWindow_Click"/>
+        </Menu>
+        <!-- Поиск -->
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="1" Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="#FBB672" Margin="0, 5, 5, 0" ToolTip="Поле ввода для поиска товара по назанию"/>
+            <ComboBox Grid.Column="0" Name="choose_comboBox" SelectedItem="{Binding SelectedHeader, Mode=TwoWay}" Margin="5, 5, 0, 0" ToolTip="Поле выбора столбца для поиска товара">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFFBB672" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+        </Grid>
+
+        <!-- Список товаров -->
+        <ListView x:Name="myListView" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding FilteredProducts}" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" Foreground="#A54654" Background="#D1D090" Margin="5, 0, 5, 5" Width="Auto">
+            <ListView.View>
+                <GridView x:Name="GridView"/>
+            </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <!-- Стиль по умолчанию -->
+                    <Setter Property="Background" Value="#D1D090"/>
+
+                    <!-- Триггер для выделения строки -->
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#86964A"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+
+        <!-- Кнопки управления -->
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical" Margin="5">
+            <TextBlock TextWrapping="Wrap" Text="Товар:" Foreground="#D1D090" HorizontalAlignment="Center"/>
+            <Button Content="Добавить" Click="AddProduct_Click" Margin="5" ToolTip="Кнопка для добавления нового товара">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Background" Value="#FBB672"/>
+
+                        <!-- Триггер для наведения -->
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#D1D090"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Content="Изменить" Click="EditProduct_Click" Margin="5" ToolTip="Кнопка для изменения определённого товара">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Background" Value="#FBB672"/>
+
+                        <!-- Триггер для наведения -->
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#D1D090"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Content="Удалить" Click="RemoveProduct_Click" Margin="5" ToolTip="Кнопка для удаления определённого товара">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Background" Value="#FBB672"/>
+
+                        <!-- Триггер для наведения -->
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#D1D090"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

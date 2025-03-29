@@ -1,0 +1,26 @@
+[
+  {
+    "Name": "Ноутбук Lenovo IdeaPad",
+    "Quantity": "10",
+    "Price": "55000"
+  },
+  {
+    "Name": "Смартфон Samsung Galaxy S21",
+    "Quantity": "25",
+    "Price": "70000"
+  },
+  {
+    "Name": "Наушники Sony WH-1000XM4",
+    "Quantity": "15",
+    "Price": "25000"
+  },
+  {
+    "Name": "Книга 'Чистый код'",
+    "Quantity": "50",
+    "Price": "1500"
+  },
+  {
+    "Name": "Кофеварка Bosch",
+    "Price": "12000"
+  }
+]

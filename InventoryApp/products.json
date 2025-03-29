@@ -1,0 +1,37 @@
+[
+    {
+        "Id": 1,
+        "Name": "Ноутбук Lenovo IdeaPad",
+        "Quantity": 10,
+        "Price": 55000.00,
+        "Category": "Электроника"
+    },
+    {
+        "Id": 2,
+        "Name": "Смартфон Samsung Galaxy S21",
+        "Quantity": 25,
+        "Price": 70000.00,
+        "Category": "Электроника"
+    },
+    {
+        "Id": 3,
+        "Name": "Наушники Sony WH-1000XM4",
+        "Quantity": 15,
+        "Price": 25000.00,
+        "Category": "Аксессуары"
+    },
+    {
+        "Id": 4,
+        "Name": "Книга 'Чистый код'",
+        "Quantity": 50,
+        "Price": 1500.00,
+        "Category": "Книги"
+    },
+    {
+        "Id": 5,
+        "Name": "Кофеварка Bosch",
+        "Quantity": 8,
+        "Price": 12000.00,
+        "Category": "Бытовая техника"
+    }
+]

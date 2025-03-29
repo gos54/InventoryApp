@@ -1,0 +1,84 @@
+﻿<Window x:Class="InventoryApp.AddEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InventoryApp"
+        mc:Ignorable="d"
+        Title="AddEditWindow" Height="350" Width="650" MinWidth="650" MinHeight="350">
+    <Grid Margin="10" Background="#86964A">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Динамически создаваемые поля -->
+        <ScrollViewer Grid.Row="0" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto">
+            <Grid x:Name="FieldsGrid" Margin="10">
+                <Grid.RowDefinitions>
+                    <!-- Строки будут добавляться динамически -->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!-- Для Label -->
+                    <ColumnDefinition Width="*" />
+                    <!-- Для TextBox -->
+                    <ColumnDefinition Width="4*" />
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </ScrollViewer>
+
+        <!-- Кнопки управления -->
+        <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Сохранить" Click="SaveButton_Click" Margin="5" Background="#FBB672" Width="100">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="BorderThickness" Value="1"/>
+
+                        <!-- Триггер для наведения -->
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#EC696B"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Grid.Column="1" Content="Отмена" Click="CancelButton_Click" Margin="5" Background="#FBB672" Width="100">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="BorderThickness" Value="1"/>
+
+                        <!-- Триггер для наведения -->
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#EC696B"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

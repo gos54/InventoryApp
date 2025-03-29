@@ -1,0 +1,64 @@
+## Игнорировать файлы сборки и исполняемые файлы
+[Bb]in/
+[Oo]bj/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.config
+*.manifest
+*.application
+*.msi
+*.ps1
+*.nupkg
+
+## Файлы пользовательских настроек Visual Studio
+*.user
+*.userosscache
+*.sln.docstates
+
+## Папка кэша Visual Studio
+.vs/
+.vscode/
+
+## Файлы резервных копий и временные файлы
+*.bak
+*.tmp
+*.swp
+*~
+~$*
+
+## Файлы ReSharper (если используется)
+_ReSharper.*
+*.ReSharper
+*.DotSettings.user
+
+## Файлы Rider (альтернативная IDE)
+.idea/
+*.idea
+
+## Файлы пакетов NuGet (но НЕ packages.config)
+packages/
+*.nupkg
+NuGet.exe
+
+## Файлы тестовых покрытий
+*.coverage
+*.coveragexml
+
+## Файлы публикации
+publish/
+*.pubxml
+
+## Файлы Docker (если используются)
+[Dd]ocker/
+docker-compose.*
+.dockerignore
+
+## Файлы манифеста ClickOnce
+*.application
+*.manifest
+*.publish
+
+## Файлы Azure Functions (если используются)
+func.exe
